@@ -1,0 +1,5 @@
+*.pyc
+*.hdf5
+*.h5
+.trashbin
+utils

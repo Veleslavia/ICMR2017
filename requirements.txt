@@ -1,0 +1,7 @@
+numpy
+pandas
+librosa
+hdf5
+sklearn
+keras>=2.0
+tensorflow>=1.0
