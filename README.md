@@ -1,4 +1,4 @@
-Code for paper "[Musical Instrument Recognition in User-generated Videos using a Multimodal Convolutional Neural Network Architecture](http://zenodo.org)" by Olga Slizovskaia, Emilia Gomez, Gloria Haro. ICMR 2017 
+Code for paper "[Musical Instrument Recognition in User-generated Videos using a Multimodal Convolutional Neural Network Architecture](https://zenodo.org/record/583961)" by Olga Slizovskaia, Emilia Gomez, Gloria Haro. ICMR 2017 
 
 We propose an approach to recognize musical instruments in video recordings based on both audio and video information.
 
@@ -15,7 +15,7 @@ tensorflow>=1.0
 
 # Pretrained models
 
-The pretrained models for audio, video and both modalities can be downloaded from [here](http://update_with_zenodo_url) for FCVID dataset and for a subset of YouTube-8M dataset. 
+The pretrained models for audio, video and both modalities can be downloaded from [here](https://zenodo.org/record/583961/files/weights.zip) for FCVID dataset and for a subset of YouTube-8M dataset. 
 
 The following weight files could be found:
 
