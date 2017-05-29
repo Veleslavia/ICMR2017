@@ -3,5 +3,6 @@ pandas
 librosa
 hdf5
 sklearn
+opencv-python
 keras>=2.0
 tensorflow>=1.0
