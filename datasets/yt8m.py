@@ -73,4 +73,7 @@ class YT8M(Dataset):
         return self.get_audio_filename(video_id) + '.spec.npy'
 
     def get_frames_filename(self, video_id):
-        return self.get_video_filename(video_id) + '.dp300.lzf.h5'
+        return self.get_video_filename(video_id) + '.frames.lzf.h5'
+
+    def get_features_filename(self, video_id):
+        return self.get_video_filename(video_id) + '.multimodal.h5'

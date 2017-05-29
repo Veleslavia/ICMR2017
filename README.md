@@ -15,70 +15,57 @@ tensorflow>=1.0
 
 # Pretrained models
 
-The pretrained models for audio, video and both modalities can be downloaded from [here](http://fcvid) for FCVID dataset and from [here](http://fcvid) for a subset of YouTube-8M dataset. 
-models.video.multiframes.datasets.yt8m.hdf5 - 20 frames
-models.video.multiframes.datasets.fcvid.hdf5 - 50 frames
+The pretrained models for audio, video and both modalities can be downloaded from [here](http://update_with_zenodo_url) for FCVID dataset and for a subset of YouTube-8M dataset. 
+
+The following weight files could be found:
+
+`models.video.multiframes.datasets.yt8m.hdf5` has been trained on 20 frames per video
+`models.video.multiframes.datasets.fcvid.hdf5` has been trained on 50 frames per video
 
 # Demo
 
+You can try to predict probabilities for the categories using the test option (-o) for the script `launch_experiment.py` which will operate on the demo recording.
+For evaluation, please, download the weight files and arrange them at `./weights` folder. 
+
+```
 python launch_experiment.py -t preprocess -m audio.xception -d fcvid -o
 python launch_experiment.py -t evaluate -m audio.xception -d fcvid -o
 
 python launch_experiment.py -t preprocess -m video.multiframes -d yt8m -o
 python launch_experiment.py -t evaluate -m video.multiframes -d yt8m -o
 
+python launch_experiment.py -t evaluate -m multimodal -d yt8m -o
+python launch_experiment.py -t evaluate -m multimodal -d fcvid -o
+```
 
 # Datasets
-
-## Features for multimodal learning
-
-### FCVID
-
-#### Audio features
-
-~/audio_crnn/fcvid_audio_features_crnn.h5 19M
-~/audio_experimental/fcvid_audio_features.h5 19M
-
-#### Video features
-
-~/video_deeppool/fcvid_50_frames_video_features.h5 134M
-
-### YouTube-8M
-
-#### Audio features
-
-~/audio_crnn/y8m_audio_features_crnn.h5 223M
-~/audio_experimental/y8m_audio_features_crnn.h5 214M
-
-#### Video features
-
-~/video_deeppool/youtube_20_pretrained_1_1_features.h5 1,2G
 
 ## Raw video data
 
 ### FCVID
 
 Please, find the information about FCVID dataset at the [official webpage](http://bigvid.fudan.edu.cn/FCVID/). From the whole dataset you will be needed only "Music -> Musical performance with instruments" subcategory.
-Once downloaded, change the stored path at ```datasets.py``` file.
-Additional information: ```~/fcvid_dataset.csv```
+Once downloaded, change the stored path in ```datasets.py``` file.
+The video ids and categories can be found in ```./datasets/fcvid_dataset.csv```
 
 ### YouTube-8M
 
 The used subset contains most represented musical instruments from YouTube-8M dataset. 
-You can find a list of Youtube video ids of videos ```~/y8m_dataset.csv```
+You can find a list of Youtube video ids of videos in the following file: ```./datasets/y8m_dataset.csv```.
 
 # Models
 
-## Audio
+### Audio
 
-CRNN model has been adopted from Choi et. al. original paper and implementation
-Xception model has been adapted from Chollet original paper and implementation
+CRNN model has been adopted from Choi et. al. original paper and implementation.
+Xception model has been adapted from Chollet original paper and implementation.
 
-## Video
+### Video
 
-We used InceptionV3 base architecture for video-based experiments. Consider the multi-frame model as a wrapper over Inception V3
+We used InceptionV3 base architecture for video-based experiments. Consider the multi-frame model as a wrapper over Inception V3.
 
-## Multimodal
+### Multimodal
 
-# Reproducing results
+The multimodal model is working over the features of penultimate layers of audio and video models respectively.
+It consist of 2 Dense and 2 BatchNormalization layers. You can find the model at `./models/multimodal.py`.
 
