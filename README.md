@@ -15,7 +15,7 @@ tensorflow>=1.0
 
 # Pretrained models
 
-The pretrained models for audio, video and both modalities can be downloaded from [here](https://zenodo.org/record/583961/files/weights.zip) for FCVID dataset and for a subset of YouTube-8M dataset. 
+The pretrained models for audio, video and both modalities can be downloaded from [here](https://drive.google.com/file/d/0B6VSPXOeu5J0MmZ6UWVCVkp4bkk/view?usp=sharing) for FCVID dataset and for a subset of YouTube-8M dataset. 
 
 The following weight files could be found:
 
@@ -23,6 +23,8 @@ The following weight files could be found:
 `models.video.multiframes.datasets.fcvid.hdf5` has been trained on 50 frames per video
 
 # Demo
+
+The demo file is a part of the recording [The Rains of Castamere \[accordion cover\]](https://www.youtube.com/watch?v=MGC__ebWYwY) ([CC BY](https://support.google.com/youtube/answer/2797468)).
 
 You can try to predict probabilities for the categories using the test option (-o) for the script `launch_experiment.py` which will operate on the demo recording.
 For evaluation, please, download the weight files and arrange them at `./weights` folder. 
@@ -40,8 +42,6 @@ python launch_experiment.py -t evaluate -m multimodal -d fcvid -o
 
 # Datasets
 
-## Raw video data
-
 ### FCVID
 
 Please, find the information about FCVID dataset at the [official webpage](http://bigvid.fudan.edu.cn/FCVID/). From the whole dataset you will be needed only "Music -> Musical performance with instruments" subcategory.
@@ -52,6 +52,23 @@ The video ids and categories can be found in ```./datasets/fcvid_dataset.csv```
 
 The used subset contains most represented musical instruments from YouTube-8M dataset. 
 You can find a list of Youtube video ids of videos in the following file: ```./datasets/y8m_dataset.csv```.
+
+### Features
+
+Multimodal features for FCVID and YouTube-8M datasets can be downloaded from [here](https://drive.google.com/file/d/0B6VSPXOeu5J0SVhSS3FwWnJYODQ/view?usp=sharing).
+The dataset size is about 10G.
+You can train and evaluate your own multimodal architecture using those data. 
+
+The features are orginized by groups and datasets. Each group is a label of a video, and datasets can be accessed by id: video_id+'/audio', video_id+'/video'.
+E.g.:
+```python
+import h5py
+fcvid_features = h5py.File('./features/fcvid.multimodal.h5', 'r')
+video_ids = fcvid_features.keys()
+audio_features = fcvid_features[video_ids[0]+'/audio'].value
+video_features = fcvid_features[video_ids[0]+'/video'].value
+```
+
 
 # Models
 

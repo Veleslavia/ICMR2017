@@ -4,15 +4,13 @@ TEST_VAL_SIZE = 0.3
 
 FCVID_AUDIO_STORAGE = ''
 FCVID_VIDEO_STORAGE = ''
-FCVID_AUDIO_FEATURE_FILE = ''
-FCVID_VIDEO_FEATURE_FILE = ''
+FCVID_MULTIMODAL_FEATURES = './features/fcvid.features.h5'
 FCVID_INFO_FILE = './datasets/fcvid_auxinfo.pkl'
 FCVID_META_FILE = './datasets/fcvid_dataset.csv'
 
 YT8M_AUDIO_STORAGE = ''
 YT8M_VIDEO_STORAGE = ''
-YT8M_AUDIO_FEATURE_FILE = ''
-YT8M_VIDEO_FEATURE_FILE = ''
+YT8M_MULTIMODAL_FEATURES = './features/yt8m.features.h5'
 YT8M_INFO_FILE = './datasets/yt8m_auxinfo.pkl'
 YT8M_META_FILE = './datasets/yt8m_dataset.csv'
 

@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 from . import Dataset
 from settings import FCVID_AUDIO_STORAGE, FCVID_VIDEO_STORAGE
-from settings import FCVID_VIDEO_FEATURE_FILE, FCVID_INFO_FILE, FCVID_META_FILE
+from settings import FCVID_MULTIMODAL_FEATURES, FCVID_INFO_FILE, FCVID_META_FILE
 from settings import DEMO_STORAGE, DEMO_AUDIO, DEMO_VIDEO, FRAMES_PER_VIDEO
 from dataloaders import audio, video, multimodal
 
@@ -35,7 +35,7 @@ class FCVID(Dataset):
     video_storage = FCVID_VIDEO_STORAGE
     spectrogram_storage = audio_storage
     frame_storage = video_storage
-    video_feature_storage = FCVID_VIDEO_FEATURE_FILE
+    multimodal_features = FCVID_MULTIMODAL_FEATURES
     n_classes = 12
     n_max_frames = 100
     categories = [u'accordionPerformance', u'celloPerformance', u'chamberMusic', u'flutePerformance',
@@ -72,6 +72,3 @@ class FCVID(Dataset):
 
     def get_frames_filename(self, video_id):
         return self.get_video_filename(video_id) + '.frames.lzf.h5'
-
-    def get_features_filename(self, video_id):
-        return self.get_video_filename(video_id) + '.multimodal.h5'

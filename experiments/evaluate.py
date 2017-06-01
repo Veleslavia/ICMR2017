@@ -1,4 +1,5 @@
-from keras.metrics import categorical_accuracy, top_k_categorical_accuracy
+from sklearn.metrics import classification_report
+import numpy as np
 from . import Experiment
 
 
@@ -17,8 +18,8 @@ class Evaluate(Experiment):
         self.demo = demo
 
     def run(self):
+        self.model.load_weights(self.weights, by_name=True)
         if self.demo:
-            self.model.load_weights(self.weights, by_name=True)
             predictions = self.model.predict_on_batch(self.dataset.data_loader(['demo']))
             print zip(self.dataset.categories, sum(predictions)/predictions.shape[0])
         else:
@@ -28,6 +29,4 @@ class Evaluate(Experiment):
                 one_sample_prediction = self.model.predict_on_batch(data)
                 predictions.append(sum(one_sample_prediction)/one_sample_prediction.shape[0])
                 targets.append(sum(target)/target.shape[0])
-            print("Categorical accuracy: {ca}".format(ca=categorical_accuracy(targets, predictions)))
-            print("Top-3 categorical accuracy: {t3ca}".format(
-                t3ca=top_k_categorical_accuracy(targets, predictions, k=3)))
+            print classification_report(np.argmax(targets, axis=1), np.argmax(predictions, axis=1))

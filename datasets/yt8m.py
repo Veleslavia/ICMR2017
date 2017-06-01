@@ -5,7 +5,7 @@ from . import Dataset
 from dataloaders import audio, video, multimodal
 
 from settings import YT8M_AUDIO_STORAGE, YT8M_VIDEO_STORAGE
-from settings import YT8M_VIDEO_FEATURE_FILE, YT8M_INFO_FILE, YT8M_META_FILE
+from settings import YT8M_MULTIMODAL_FEATURES, YT8M_INFO_FILE, YT8M_META_FILE
 from settings import DEMO_STORAGE, DEMO_AUDIO, DEMO_VIDEO, FRAMES_PER_VIDEO
 
 
@@ -37,6 +37,7 @@ class YT8M(Dataset):
     video_storage = YT8M_VIDEO_STORAGE
     spectrogram_storage = audio_storage
     frame_storage = video_storage
+    multimodal_features = YT8M_MULTIMODAL_FEATURES
     n_classes = 13
     n_max_frames = 20
     categories = ['Guitar', 'Piano', 'Drums', 'Violin', 'Accordion', 'Saxophone', 'Flute', 'Organ', 'Cello',
